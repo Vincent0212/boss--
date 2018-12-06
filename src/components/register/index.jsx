@@ -6,6 +6,10 @@ import Logo from '../logo';
 const Item = List.Item;
 
 class Register extends Component {
+  static propsTypes = {
+    user : PropTypes.object.isRequired,
+    register : PropTypes.func.isRequired
+  }
   state = {
     // isBossChecked: true,
     laoban: true,
@@ -13,33 +17,6 @@ class Register extends Component {
     password: '',
     rePassword: ''
   }
-
-  /* handleRadio = type => {
-   //得到单选按钮的类型，是老板还是大神
-   if (type === 'laoban') {
-   this.setState({
-   isBossChecked: true
-   })
-   } else {
-   this.setState({
-   isBossChecked: false
-   })
-   }
-   }*/
-
-  /*handleUsername = value => {
-   //更新状态
-   this.setState({
-   username: value
-   })
-   }
-
-   handlePassword = value => {
-   //更新状态
-   this.setState({
-   password: value
-   })
-   }*/
 
   handleChange = (type, value) => {
     //更新状态
@@ -53,21 +30,21 @@ class Register extends Component {
     const {laoban, password, rePassword, username} = this.state;
     //发送ajax
     console.log(laoban, password, rePassword, username);
-
-    const user = await reqRegister({username, password, type: laoban ? 'laoban' : 'dashen'});
-    console.log(user);
-
-
-    goLogin = () => {
-      //去登录页面, 将地址切换为login
-      //会产生浏览历史记录
-      // this.props.history.push('/login');
-      //不会产生浏览历史记录
-      this.props.history.replace('/login');
-    }
+    this.props.register({type : laoban ?  'laoban' : 'dashen',  password, rePassword, username})
+  }
+  goLogin = () => {
+    //去登录页面, 将地址切换为login
+    //会产生浏览历史记录
+    // this.props.history.push('/login');
+    //不会产生浏览历史记录
+    this.props.history.replace('/login');
   }
   render () {
     const {laoban} = this.state;
+    const {errMsg, redirectTo} = this.props.user;
+    if(redirectTo){
+      return <Redirect to={redirectTo}/>
+    }
     return (
       <div>
         <NavBar>硅谷直聘</NavBar>
