@@ -10,37 +10,37 @@ class Login extends Component {
     user: PropTypes.object.isRequired,
     login: PropTypes.func.isRequired
   }
-
+  
   state = {
     username: '',
     password: ''
   }
-
+  
   handleChange = (type, value) => {
     //更新状态
     this.setState({
       [type]: value
     })
   }
-
+  
   login = async () => {
     //收集表单数据
     const {password, username} = this.state;
     //调用容器组件传递的更新状态的方法
     this.props.login({password, username});
   }
-
+  
   goRegister = () => {
     this.props.history.replace('/register');
   }
-
+  
   render () {
     const {errMsg, redirectTo} = this.props.user;
-
+  
     if (redirectTo) {
       return <Redirect to={redirectTo} />
     }
-
+    
     return (
       <div>
         <NavBar>硅谷直聘</NavBar>

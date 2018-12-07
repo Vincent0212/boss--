@@ -1,5 +1,5 @@
 /*
- 作用：用来定义发送ajax模块工具函数
+  作用：用来定义发送ajax模块工具函数
  */
 import axios from 'axios';
 
@@ -9,12 +9,12 @@ export default async function (url, data, method = 'GET') {
   //处理请求参数
   if (data) {
     /*
-     {
-     username: 123,
-     password: 456
-     }
-
-     username=123&password=456
+      {
+        username: 123,
+        password: 456
+      }
+      
+      username=123&password=456
      */
     //返回一个数组，数组中包含对象中的所有属性名
     const arr = Object.keys(data);

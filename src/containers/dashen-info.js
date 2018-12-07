@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 
-import LaobaoInfo from '../components/laoban-info';
+import DashenInfo from '../components/dashen-info';
 import {update} from '../redux/actions';
 
 export default connect(
   state => ({user: state.user}),
   {update}
-)(LaobaoInfo);
+)(DashenInfo);

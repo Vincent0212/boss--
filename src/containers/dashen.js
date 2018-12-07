@@ -1,11 +1,11 @@
 /**
- * Created by li158 on 2018/12/5.
+ * Created by li158 on 2018/12/6.
  */
-import {connet} from 'react-redux';
-import Dashen from '../components/dashen-info';
-import {update} from '../redux/actions';
+import {connect} from 'react-redux';
+import Dashen from '../components/dashen';
+import {getUserList} from '../redux/actions';
 
-export default connet(
-  state => ({user : state.user}),
-  {update}
-)(DashenInfo);
+export default connect(
+  state =>({userList: state.userList}),
+{getUserList}
+)(Dashen);

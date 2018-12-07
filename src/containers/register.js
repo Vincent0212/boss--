@@ -1,6 +1,3 @@
-/**
- * Created by li158 on 2018/12/4.
- */
 import {connect} from 'react-redux';
 //引入UI组件
 import Register from '../components/register';
